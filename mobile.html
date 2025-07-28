@@ -196,13 +196,13 @@
         const userAnswer = box.getAttribute('data-answer');
         if (userAnswer === correctAnswer) {
           box.classList.add('correct');
-          box.querySelector('.answer-icon').textContent = '✔️';
+          box.querySelector('.answer-icon').textContent = '✔';
           resultDiv.textContent = 'Correct! Writing is a cultural invention.';
           resultDiv.style.color = '#195905';
           dingSound.play();
         } else {
           box.classList.add('incorrect');
-          box.querySelector('.answer-icon').textContent = '❌';
+          box.querySelector('.answer-icon').textContent = '✖';
           resultDiv.textContent = 'Incorrect! Writing is a cultural invention.';
           resultDiv.style.color = '#8A0000';
           buzzSound.play();
