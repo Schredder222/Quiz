@@ -6,84 +6,88 @@
   <title>True or False Quiz</title>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet" />
   <style>
+    body {
+      background-color: #fdfbed;
+      font-family: 'Josefin Sans', sans-serif;
+      color: #000;
+      margin: 0;
+      padding: 16px;
+      font-weight: normal;
+      text-align: center;
+    }
+
     h2 {
       font-size: 1.6rem;
       margin-bottom: 15px;
       font-weight: normal;
       white-space: nowrap;
     }
-    body {
-      background-color: #fdfbed;
-      font-family: 'Josefin Sans', sans-serif;
-      color: #000;
-      margin: 16px;
-      font-weight: normal;
-      text-align: center;
-    }
+
     #quiz-container {
       border: 1px solid #8A0000;
       border-radius: 0px;
-      padding: 20px 5vw;
+      padding: 20px 16px;
       max-width: 700px;
-      width: 100%;
       margin: 40px auto;
       box-sizing: border-box;
     }
+
     .question {
       font-size: 1.25rem;
       margin-bottom: 30px;
       font-weight: normal;
     }
-    #answers {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
+
     .answer-box {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       background-color: #f4f0ec;
       border: 1px solid #8A0000;
       border-radius: 4px;
-      padding: 15px 40px;
+      padding: 15px 30px;
       font-weight: normal;
+      margin: 20px;
       cursor: pointer;
       transition: transform 0.2s;
       font-size: 1.1rem;
       user-select: none;
-      flex: 1 1 140px;
-      max-width: 240px;
+      min-width: 120px;
       color: #000;
       position: relative;
-      box-sizing: border-box;
     }
+
     .answer-box:hover {
       background-color: #f7eac4;
       transform: scale(1.05);
     }
-    .answer-box.correct, .answer-box.incorrect {
+
+    .answer-box.correct,
+    .answer-box.incorrect {
       cursor: default;
       transform: none;
     }
+
     .answer-icon {
       position: absolute;
-      right: -30px;
+      right: -40px;
       font-size: 1.5rem;
       user-select: none;
       top: 50%;
       transform: translateY(-50%);
       background: none;
       border: none;
-      padding-left: 10px;
+      padding-left: 8px;
     }
+
     .correct .answer-icon {
       color: #195905;
     }
+
     .incorrect .answer-icon {
       color: #8A0000;
     }
+
     #result {
       margin-top: 25px;
       font-size: 1.3rem;
@@ -92,10 +96,25 @@
       color: #000;
     }
 
-    /* Optional: Adjust icon spacing on very small screens */
-    @media (max-width: 360px) {
+    /* Mobile styling */
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.3rem;
+      }
+      .question {
+        font-size: 1.05rem;
+      }
+      .answer-box {
+        font-size: 1rem;
+        padding: 12px 20px;
+        margin: 12px;
+      }
+      #result {
+        font-size: 1.1rem;
+      }
       .answer-icon {
-        right: -24px;
+        right: -30px;
+        font-size: 1.3rem;
       }
     }
   </style>
@@ -145,8 +164,8 @@
           resultDiv.textContent = 'Incorrect! Writing is a cultural invention.';
           resultDiv.style.color = '#8A0000';
           buzzSound.play();
+          // No tick on the correct answer
         }
-
         // Keep selected box highlighted with hover colour
         box.style.backgroundColor = '#f7eac4';
       });
