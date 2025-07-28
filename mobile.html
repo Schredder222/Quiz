@@ -11,31 +11,41 @@
       font-family: 'Josefin Sans', sans-serif;
       color: #000;
       margin: 0;
-      padding: 16px;
-      font-weight: normal;
       text-align: center;
-    }
-
-    h2 {
-      font-size: 1.6rem;
-      margin-bottom: 15px;
-      font-weight: normal;
-      white-space: nowrap;
     }
 
     #quiz-container {
       border: 1px solid #8A0000;
-      border-radius: 0px;
-      padding: 2px 2px;
+      border-radius: 0;
       max-width: 700px;
       margin: 40px auto;
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin: 15px 0 10px 0;
+      font-weight: normal;
+      white-space: nowrap;
     }
 
     .question {
       font-size: 1.25rem;
-      margin-bottom: 30px;
+      margin: 10px 0 20px 0;
       font-weight: normal;
+      padding: 10px 20px;
+    }
+
+    #answers {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      gap: 42px;
+      padding: 0 20px;
     }
 
     .answer-box {
@@ -44,17 +54,17 @@
       justify-content: center;
       background-color: #f4f0ec;
       border: 1px solid #8A0000;
-      border-radius: 2px;
+      border-radius: 4px;
       padding: 15px 30px;
-      font-weight: normal;
-      margin: 20px;
+      margin: 20;
       cursor: pointer;
       transition: transform 0.2s;
       font-size: 1.1rem;
       user-select: none;
       min-width: 120px;
-      color: #000;
+      color: #8A0000;
       position: relative;
+      font-weight: normal;
     }
 
     .answer-box:hover {
@@ -89,32 +99,36 @@
     }
 
     #result {
-      margin-top: 25px;
       font-size: 1.3rem;
       font-weight: normal;
-      min-height: 28px;
+      min-height: 1.5em;
       color: #000;
+      padding: 10px 20px 20px;
     }
 
-    /* Mobile styling */
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
       h2 {
         font-size: 1.3rem;
       }
+
       .question {
-        font-size: 1.05rem;
+        font-size: 1.1rem;
       }
+
       .answer-box {
         font-size: 1rem;
         padding: 12px 20px;
-        margin: 12px;
+        min-width: 100px;
       }
-      #result {
-        font-size: 1.1rem;
-      }
+
       .answer-icon {
         right: -30px;
         font-size: 1.3rem;
+      }
+
+      #result {
+        font-size: 1.1rem;
+        padding: 8px 16px 16px;
       }
     }
   </style>
@@ -164,8 +178,8 @@
           resultDiv.textContent = 'Incorrect! Writing is a cultural invention.';
           resultDiv.style.color = '#8A0000';
           buzzSound.play();
-          // No tick on the correct answer
         }
+
         // Keep selected box highlighted with hover colour
         box.style.backgroundColor = '#f7eac4';
       });
