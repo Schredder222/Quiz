@@ -12,31 +12,41 @@
       color: #000;
       margin: 0;
       text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
     }
 
     #quiz-container {
       border: 1px solid #8A0000;
       border-radius: 0;
       max-width: 700px;
+      width: 100%;
       margin: 40px auto;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 0; /* No padding outside border */
     }
 
     h2 {
       font-size: 1.6rem;
-      margin: 15px 0 10px 0;
+      margin: 30px 0 10px 0; /* Added extra space above title */
       font-weight: normal;
       white-space: nowrap;
     }
 
     .question {
       font-size: 1.25rem;
-      margin: 10px 0 20px 0;
+      margin: 10px 0 15px 0; /* Reduced margin below question */
       font-weight: normal;
-      padding: 10px 20px;
+      padding: 0 20px;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 700px;
     }
 
     #answers {
@@ -45,7 +55,10 @@
       flex-wrap: wrap;
       margin-bottom: 10px;
       gap: 42px;
-      padding: 0 20px;
+      padding: 0 20px 10px 20px;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 700px;
     }
 
     .answer-box {
@@ -64,7 +77,6 @@
       color: #8A0000;
       position: relative;
       font-weight: normal;
-      margin: 0; /* reset margin */
     }
 
     .answer-box:hover {
@@ -104,8 +116,12 @@
       min-height: 1.5em;
       color: #000;
       padding: 10px 20px 20px;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 700px;
     }
 
+    /* Responsive/mobile styles */
     @media (max-width: 600px) {
       h2 {
         font-size: 1.3rem;
@@ -113,23 +129,22 @@
 
       .question {
         font-size: 1.1rem;
+        margin-bottom: 10px;
+        padding: 0 10px;
       }
 
       #answers {
         flex-direction: column;
         gap: 20px;
-        padding: 0 10px;
-        align-items: center; /* centres answer boxes */
+        padding: 0 10px 10px 10px;
       }
 
       .answer-box {
         font-size: 1rem;
         padding: 12px 20px;
-        min-width: auto;
-        width: 100%;
+        min-width: 100%;
         max-width: 300px;
-        margin: 0; /* remove margin auto */
-        position: relative;
+        margin: 0 auto; /* centres the answer boxes */
       }
 
       .answer-icon {
