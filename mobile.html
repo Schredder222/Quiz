@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>True or False Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet" />
+  <style>
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      font-weight: normal;
+      white-space: nowrap;
+    }
+    body {
+      background-color: #fdfbed;
+      font-family: 'Josefin Sans', sans-serif;
+      color: #000;
+      margin: 16px;
+      font-weight: normal;
+      text-align: center;
+    }
+    #quiz-container {
+      border: 1px solid #8A0000;
+      border-radius: 0px;
+      padding: 20px 5vw;
+      max-width: 700px;
+      width: 100%;
+      margin: 40px auto;
+      box-sizing: border-box;
+    }
+    .question {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+      font-weight: normal;
+    }
+    #answers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .answer-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f4f0ec;
+      border: 1px solid #8A0000;
+      border-radius: 4px;
+      padding: 15px 30px;
+      font-weight: normal;
+      cursor: pointer;
+      transition: transform 0.2s;
+      font-size: 1.1rem;
+      user-select: none;
+      flex: 1 1 140px;
+      max-width: 240px;
+      color: #000;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .answer-box:hover {
+      background-color: #f7eac4;
+      transform: scale(1.05);
+    }
+    .answer-box.correct, .answer-box.incorrect {
+      cursor: default;
+      transform: none;
+    }
+    .answer-icon {
+      position: absolute;
+      right: -30px;
+      font-size: 1.5rem;
+      user-select: none;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      padding-left: 8px;
+    }
+    .correct .answer-icon {
+      color: #195905;
+    }
+    .incorrect .answer-icon {
+      color: #8A0000;
+    }
+    #result {
+      margin-top: 25px;
+      font-size: 1.3rem;
+      font-weight: normal;
+      min-height: 28px;
+      color: #000;
+    }
+
+    /* Optional: Adjust icon spacing on very small screens */
+    @media (max-width: 360px) {
+      .answer-icon {
+        right: -24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="quiz-container">
+    <h2>True or False?</h2>
+    <div class="question">Writing is a natural and universal trait</div>
+    <div id="answers">
+      <div class="answer-box" data-answer="true">
+        True
+        <span class="answer-icon" aria-hidden="true"></span>
+      </div>
+      <div class="answer-box" data-answer="false">
+        False
+        <span class="answer-icon" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div id="result"></div>
+  </div>
+
+  <audio id="ding-sound" src="https://schredder222.github.io/Quiz/ding.mp3" preload="auto"></audio>
+  <audio id="buzz-sound" src="https://schredder222.github.io/Quiz/incorrect.mp3" preload="auto"></audio>
+
+  <script>
+    const answers = document.querySelectorAll('.answer-box');
+    const resultDiv = document.getElementById('result');
+    const dingSound = document.getElementById('ding-sound');
+    const buzzSound = document.getElementById('buzz-sound');
+    const correctAnswer = 'false';
+
+    answers.forEach(box => {
+      box.addEventListener('click', () => {
+        // Disable further clicks
+        answers.forEach(b => b.style.pointerEvents = 'none');
+
+        const userAnswer = box.getAttribute('data-answer');
+        if (userAnswer === correctAnswer) {
+          box.classList.add('correct');
+          box.querySelector('.answer-icon').textContent = '✔️';
+          resultDiv.textContent = 'Correct! Writing is a cultural invention.';
+          resultDiv.style.color = '#195905';
+          dingSound.play();
+        } else {
+          box.classList.add('incorrect');
+          box.querySelector('.answer-icon').textContent = '❌';
+          resultDiv.textContent = 'Incorrect! Writing is a cultural invention.';
+          resultDiv.style.color = '#8A0000';
+          buzzSound.play();
+        }
+
+        // Keep selected box highlighted with hover colour
+        box.style.backgroundColor = '#f7eac4';
+      });
+    });
+  </script>
+</body>
+</html>
