@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>True or False Quiz</title>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet" />
   <style>
-    /* Reset box-sizing */
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -14,6 +13,7 @@
     body {
       background-color: #fdfbed;
       font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
       color: #000;
       margin: 0;
       text-align: center;
@@ -21,7 +21,7 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      padding: 5px 5px 5px 5px /* prevent body content touching edges on small screens */
+      padding: 5px;
     }
 
     #quiz-container {
@@ -29,8 +29,8 @@
       border-radius: 0;
       max-width: 700px;
       width: 100%;
-      margin: 0px auto;
-      padding: 20px 25px; /* Padding INSIDE the border */
+      margin: 0 auto;
+      padding: 20px 25px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -38,28 +38,28 @@
     }
 
     h2 {
+      font-family: 'Julius Sans One', sans-serif;
       font-size: 1.6rem;
-      margin: 30px 0 10px 0; /* Space above and below */
+      margin: 20px 0 10px;
       font-weight: normal;
       white-space: nowrap;
     }
 
     .question {
       font-size: 1.25rem;
-      margin: 10px 0 15px 0; /* smaller gap under question */
-      font-weight: normal;
+      margin: 10px 0 15px;
       padding: 0 10px;
       width: 100%;
       max-width: 700px;
+      font-weight: 300;
     }
 
     #answers {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 10px;
       gap: 42px;
-      padding: 0 10px 10px 10px;
+      padding: 0 10px 10px;
       width: 100%;
       max-width: 700px;
     }
@@ -77,11 +77,10 @@
       font-size: 1.1rem;
       user-select: none;
       min-width: 120px;
-      max-width: 45%;  /* Ensure two boxes side by side don't overflow */
+      max-width: 45%;
       color: #8A0000;
       position: relative;
-      font-weight: normal;
-      box-sizing: border-box;
+      font-weight: 300;
     }
 
     .answer-box:hover {
@@ -116,17 +115,15 @@
     }
 
     #result {
-      font-size: 1.1rem;
-      font-weight: normal;
-      min-height: 2.5em;
+      font-size: 1.2rem;
+      font-weight: 300;
+      min-height: 2.4em;
       color: #000;
-      padding: 10px 10px 5px;
-      box-sizing: border-box;
+      padding: 10px 10px 20px;
       width: 100%;
       max-width: 700px;
     }
 
-    /* Responsive/mobile styles */
     @media (max-width: 600px) {
       h2 {
         font-size: 1.3rem;
@@ -141,18 +138,16 @@
       #answers {
         flex-direction: column;
         gap: 20px;
-        padding: 0 10px 10px 10px;
-        max-width: 700px;
+        padding: 0 10px 10px;
       }
 
       .answer-box {
         font-size: 1rem;
         padding: 12px 20px;
         min-width: auto;
-        max-width: 300px; /* limit width */
-        margin: 0 auto; /* centre horizontally */
-        width: 100%; /* fill container width */
-        box-sizing: border-box;
+        max-width: 300px;
+        margin: 0 auto;
+        width: 100%;
       }
 
       .answer-icon {
@@ -162,7 +157,7 @@
 
       #result {
         font-size: 1rem;
-        padding: 6px 16px 5px;
+        padding: 6px 16px 10px;
       }
     }
   </style>
@@ -196,7 +191,6 @@
 
     answers.forEach(box => {
       box.addEventListener('click', () => {
-        // Disable further clicks
         answers.forEach(b => b.style.pointerEvents = 'none');
 
         const userAnswer = box.getAttribute('data-answer');
@@ -214,7 +208,6 @@
           buzzSound.play();
         }
 
-        // Keep selected box highlighted with hover colour
         box.style.backgroundColor = '#f7eac4';
       });
     });
