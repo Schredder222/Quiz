@@ -19,7 +19,7 @@
       border-radius: 0;
       max-width: 700px;
       margin: 40px auto;
-      padding-top: 20px;
+      padding-top: 30px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
@@ -65,7 +65,9 @@
       color: #8A0000;
       position: relative;
       font-weight: normal;
-      margin: 0; /* reset margin */
+      margin: 0; /* Remove margin to avoid offset */
+      width: auto; /* default */
+      max-width: 300px; /* max width for desktop */
     }
 
     .answer-box:hover {
@@ -120,16 +122,15 @@
         flex-direction: column;
         gap: 20px;
         padding: 0 10px;
-        align-items: center; /* centres answer boxes */
+        align-items: center; /* centre vertically stacked boxes */
       }
 
       .answer-box {
         font-size: 1rem;
         padding: 12px 20px;
-        min-width: auto;
-        width: 100%;
-        max-width: 300px;
-        margin: 0; /* remove margin auto */
+        min-width: 0; /* reset min-width for mobile */
+        width: 260px; /* fixed width to keep consistent and centered */
+        margin: 0; /* ensure no margin */
         position: relative;
       }
 
