@@ -6,11 +6,16 @@
   <title>True or False Quiz</title>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet" />
   <style>
-    body {
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background-color: #fdfbed;
       font-family: 'Josefin Sans', sans-serif;
       color: #000;
-      margin: 0;
       text-align: center;
     }
 
@@ -18,12 +23,9 @@
       border: 1px solid #8A0000;
       border-radius: 0;
       max-width: 700px;
-      margin: 40px auto;
-      padding-top: 30px;
+      width: 90vw;
       box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      padding: 20px 30px;
     }
 
     h2 {
@@ -65,9 +67,6 @@
       color: #8A0000;
       position: relative;
       font-weight: normal;
-      margin: 0; /* Remove margin to avoid offset */
-      width: auto; /* default */
-      max-width: 300px; /* max width for desktop */
     }
 
     .answer-box:hover {
@@ -122,16 +121,14 @@
         flex-direction: column;
         gap: 20px;
         padding: 0 10px;
-        align-items: center; /* centre vertically stacked boxes */
       }
 
       .answer-box {
         font-size: 1rem;
         padding: 12px 20px;
-        min-width: 0; /* reset min-width for mobile */
-        width: 260px; /* fixed width to keep consistent and centered */
-        margin: 0; /* ensure no margin */
-        position: relative;
+        min-width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
       }
 
       .answer-icon {
